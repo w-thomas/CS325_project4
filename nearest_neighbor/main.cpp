@@ -6,6 +6,7 @@ Description: 	Nearest neighbor example program.
 */
 
 #include "nn.hpp"
+#include "2opt.hpp"
 #include <vector>
 #include <iostream>
 #include <cstdlib>
@@ -41,6 +42,20 @@ int main()
 
 	//Get and output cost
 	int cost = getCost(adjacencyMatrix, tour);
+	std::cout << "Total cost: " << cost << std::endl;
+
+	//Get 2opt tour
+	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities);
+
+	//Output tour
+	for(int i = 0; i <= numCities; i++)
+	{
+		std::cout << two_optTour[i] << '\t';
+	}
+	std::cout << std::endl;
+
+	//Get and output cost
+	cost = getCost(adjacencyMatrix, two_optTour);
 	std::cout << "Total cost: " << cost << std::endl;
 
 	return 0;
