@@ -33,7 +33,6 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 					improve = 0;
 					finalTour = newTour;
 					best_dist = new_dist;
-					std::cout << "test best dist: " << best_dist << std::endl;
 				}
 			}
 		}
