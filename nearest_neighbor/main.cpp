@@ -15,7 +15,7 @@ Description: 	Nearest neighbor example program.
 int main()
 {
 	std::srand( time(0) );		//Be sure to seed if using the random matrix generator
-	int numCities = 5;
+	int numCities = 10;
 
 	//Generate a random adjacency matrix
 	std::vector< std::vector<int> > adjacencyMatrix = randAdjMatrix(numCities);

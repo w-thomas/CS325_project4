@@ -10,20 +10,28 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	//get tour size
 	int size = nnTour.size();
 
+	std::cout << "test: " << size << std::endl;
 	//repeat until no improvement is made
 	int improve = 0;
 
 	std::vector<int> finalTour = nnTour;
 
+	for(int i = 0; i <= numCities; i++)
+	{
+		std::cout << nnTour[i] << '\t';
+	}
+	std::cout << std::endl;
+
 	while (improve < 20)
 	{	
 		//Iterate through route and swap edges
-		int best_dist = getCost(adjacencyMatrix, nnTour);
-		for (int i = 0; i < size - 1; i++)
+		//Don't swap first and last indices
+		int best_dist = getCost(adjacencyMatrix, finalTour);
+		for (int i = 1; i < size - 2; i++)
 		{
-			for (int k = i+1; k < size; k++)
+			for (int k = i+1; k < size - 1; k++)
 			{
-				std::vector<int> newTour = two_optSwap(nnTour, i, k, numCities);
+				std::vector<int> newTour = two_optSwap(finalTour, i, k, numCities);
 				int new_dist = getCost(adjacencyMatrix, newTour);
 
 				//Improvement found, start over
@@ -32,6 +40,7 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 					improve = 0;
 					finalTour = newTour;
 					best_dist = new_dist;
+					std::cout << "test best dist: " << best_dist << std::endl;
 				}
 			}
 		}
@@ -49,8 +58,8 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 */
 std::vector<int> two_optSwap(std::vector<int> nnTour, int swapFront, int swapEnd, int numCities)
 {
-	int size = numCities;
-	std::vector<int> newTour(size);
+	int size = nnTour.size();
+	std::vector<int> newTour = nnTour;
 
 	for (int i = 0; i < swapFront - 1; i++)
 	{
