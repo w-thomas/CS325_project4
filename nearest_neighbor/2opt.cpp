@@ -60,7 +60,7 @@ std::vector<int> two_optSwap(std::vector<int> nnTour, int swapFront, int swapEnd
 	}
 
 	int dec = 0;
-	for (int i = swapFront; i < swapEnd; i++)
+	for (int i = swapFront; i <= swapEnd; i++)
 	{
 		newTour[i] = nnTour[swapEnd - dec];
 		dec++;
