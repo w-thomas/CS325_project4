@@ -10,17 +10,10 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	//get tour size
 	int size = nnTour.size();
 
-	std::cout << "test: " << size << std::endl;
 	//repeat until no improvement is made
 	int improve = 0;
 
 	std::vector<int> finalTour = nnTour;
-
-	for(int i = 0; i <= numCities; i++)
-	{
-		std::cout << nnTour[i] << '\t';
-	}
-	std::cout << std::endl;
 
 	while (improve < 20)
 	{	
@@ -70,6 +63,7 @@ std::vector<int> two_optSwap(std::vector<int> nnTour, int swapFront, int swapEnd
 	for (int i = swapFront; i < swapEnd; i++)
 	{
 		newTour[i] = nnTour[swapEnd - dec];
+		dec++;
 	}
 
 	for (int i = swapEnd + 1; i < size; i++)
