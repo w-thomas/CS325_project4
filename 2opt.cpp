@@ -15,8 +15,9 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	bool improve = false;
 
 	std::vector<int> finalTour = nnTour;
-  clock_t max_time = CLOCKS_PER_SEC * 178;
-  clock_t loop_time;
+  	clock_t max_time = CLOCKS_PER_SEC * 178;
+  	clock_t loop_time;
+  	clock_t current_time;
 	while (!improve && timer < max_time)
 	{
 		//Iterate through route and swap edges
@@ -36,15 +37,21 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 					finalTour = newTour;
 					best_dist = new_dist;
 				}
-			}
-			loop_time = clock();
-			timer += (loop_time - timer);
-		}
 
+				//Check timer and return if necessary
+				current_time = clock();
+				loop_time = current_time - timer;
+				if(loop_time > max_time)
+				{
+					std::cout << "time in seconds: " << (loop_time / CLOCKS_PER_SEC) << std::endl;
+					return finalTour;
+				}
+			}
+		}
 		improve = true;
 	}
-  std::cout << "time: " << (timer / CLOCKS_PER_SEC) << '\n';
 
+  	std::cout << "time in seconds: " << (loop_time / CLOCKS_PER_SEC) << '\n';
 	return finalTour;
 }
 
