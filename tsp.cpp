@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cmath>
 #include <sstream>
+#include "tsp.hpp"
 
 class point{
   public:
@@ -29,19 +30,12 @@ void get_input(char* fName, std::vector< std::vector<int> >& matrix){
 
   // Now we want to turn the list of points into an adjacency matrix.
   int numPoints = pointList.size();
+  matrix.resize(numPoints, std::vector<int>(numPoints, -1));
+
   for (int a = 0; a < numPoints; a++){
     for (int b = 0; b < numPoints; b++){
-      std::cout << pointList.size() << '\n';
-      std::cout << pointList[a].number << '\n';
-      matrix[a][b] = round(sqrt((pointList[a].x - pointList[b].x)^2 + (pointList[a].y - pointList[b].y)^2));
+      matrix[a][b] = round(sqrt((pointList[a].x - pointList[b].x)*(pointList[a].x - pointList[b].x) + (pointList[a].y - pointList[b].y)*(pointList[a].y - pointList[b].y)));
+      //std::cout << pointList[a].number << " " << pointList[b].number << " " << matrix[a][b] << std::endl;
     }
   }
-  std::cout << "Here3\n";
-  
-}
-
-int main(int argc, char** argv){
-  std::vector< std::vector<int> > matrix;
-  get_input(argv[1], matrix);
-  return 0;
 }
