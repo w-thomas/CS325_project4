@@ -15,7 +15,7 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	bool improve = false;
 
 	std::vector<int> finalTour = nnTour;
-  clock_t max_time = 180000;
+  clock_t max_time = CLOCKS_PER_SEC * 178;
   clock_t loop_time;
 	while (!improve && timer < max_time)
 	{
@@ -43,6 +43,7 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 
 		improve = true;
 	}
+  std::cout << "time: " << (timer / CLOCKS_PER_SEC) << '\n';
 
 	return finalTour;
 }
