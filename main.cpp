@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	std::cout << std::endl;
 
 	//Get 2opt tour
-	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities, endTime);
+	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities, startTime);
 
 	//Open output file
 	std::ofstream file;
