@@ -27,8 +27,12 @@ int main(int argc, char* argv[])
   	get_input(argv[1], adjacencyMatrix);
   	int numCities = adjacencyMatrix.size();
 
+
+  clock_t startTime, endTime;
+  startTime = clock();
 	//Get nearest neighbor tour
 	std::vector<int> tour = nnTour(adjacencyMatrix, numCities);
+
 	
 	std::ofstream file;
 	std::string fName = argv[1];
@@ -51,10 +55,11 @@ int main(int argc, char* argv[])
 	std::cout << std::endl;
 
   file.close();
-	
+	endTime = clock();
+	endTime -= startTime;
 
 	//Get 2opt tour
-	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities);
+	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities, endTime);
 
 	//Output tour
 	std::cout << "After Pairwise Comparison" << std::endl;

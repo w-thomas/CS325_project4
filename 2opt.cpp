@@ -2,10 +2,11 @@
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
+#include <ctime>
 #include "2opt.hpp"
 #include "nn.hpp"
 
-std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> > adjacencyMatrix, int numCities)
+std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> > adjacencyMatrix, int numCities, clock_t timer)
 {
 	//get tour size
 	int size = nnTour.size();
@@ -14,9 +15,10 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	bool improve = false;
 
 	std::vector<int> finalTour = nnTour;
-
-	while (!improve)
-	{	
+  clock_t max_time = 180000;
+  clock_t loop_time;
+	while (!improve && timer < max_time)
+	{
 		//Iterate through route and swap edges
 		//Don't swap first and last indices
 		int best_dist = getCost(adjacencyMatrix, finalTour);
@@ -35,6 +37,8 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 					best_dist = new_dist;
 				}
 			}
+			loop_time = clock();
+			timer += (loop_time - timer);
 		}
 
 		improve = true;
