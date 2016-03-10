@@ -11,10 +11,11 @@ class point{
     int y;
 };
 
-void get_input(std::string fName, std::vector< std::vector<int> >& matrix){
+void get_input(char* fName, std::vector< std::vector<int> >& matrix){
   std::vector<point> pointList;
   int i, number, x, y, switcher = 1;
-  std::ifstream file(fName);
+  std::ifstream file;
+  file.open(fName);
   while (file >> i){
     switch (switcher){
       case 1:
@@ -44,13 +45,13 @@ void get_input(std::string fName, std::vector< std::vector<int> >& matrix){
   int numPoints = pointList.size();
   for (int a = 0; a < numPoints; a++){
     for (int b = 0; b < numPoints; b++){
-      matrix[a][b] = round(sqrt((a.x - b.x)^2 + (a.y - b.y)^2));
+      matrix[a][b] = round(sqrt((pointList[a].x - pointList[b].x)^2 + (pointList[a].y - pointList[b].y)^2));
     }
   }
   
 }
 
-int main(int argc, std::string * argv){
+int main(int argc, char** argv){
   std::vector< std::vector<int> > matrix;
   get_input(argv[1], &matrix);
   return 0;
