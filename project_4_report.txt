@@ -1,0 +1,72 @@
+run verifiers
+
+example instances solutions and time taken
+
+competition instances solutions and time taken
+
+
+Description of Algorithm
+
+Our program finds a tour using a two step process. First, we create a tour using the nearest neighbor algorithm. The nearest neighbor algorithm is a greedy algorithm that always adds the cheapest edge that will continue the tour. It starts at an arbitrary vertex and an empty tour represented by an array of vertices. In our algorithm, it always starts and ends at vertex 0. It checks every edge from the current vertex, takes the least expensive edge that leads to a vertex that is not already in the tour, and adds it to the tour. This repeats until every city has been visited and we have returned to vertex 0. Second, we refine this answer using pairwise comparison. In pairwise comparison, each possible pair of edges is considered and they are switched if doing so will result in a less expensive tour.
+
+Nearest Neighbor Pseudocode
+
+current vertex = 0
+
+for # of vertices do
+	for # of edges do
+		if the edge is the cheapest edge and the destination vertex is not already in the tour
+			current vertex = destination vertex
+			add the current vertex to the tour
+		endif
+	endloop
+endloop
+
+Pairwise Comparison Pseudocode
+### TODO
+
+
+
+Example Instance Solutions
+
+Instance: tsp_example_1.txt
+Solution: 
+Time Taken: 
+
+Instance: tsp_example_2.txt
+Solution: 
+Time Taken: 
+
+Instance: tsp_example_3.txt
+Solution: 
+Time Taken: 
+
+
+Competition Instance Solutions
+Instance: test-input-1.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-2.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-3.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-4.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-5.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-6.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-7.txt
+Solution: 
+Time Taken: 
