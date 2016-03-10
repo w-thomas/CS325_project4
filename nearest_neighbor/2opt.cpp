@@ -11,11 +11,11 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	int size = nnTour.size();
 
 	//repeat until no improvement is made
-	int improve = 0;
+	bool improve = false;
 
 	std::vector<int> finalTour = nnTour;
 
-	while (improve < 20)
+	while (!improve)
 	{	
 		//Iterate through route and swap edges
 		//Don't swap first and last indices
@@ -30,14 +30,14 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 				//Improvement found, start over
 				if(new_dist < best_dist)
 				{
-					improve = 0;
+					improve = false;
 					finalTour = newTour;
 					best_dist = new_dist;
 				}
 			}
 		}
 
-		improve++;
+		improve = true;
 	}
 
 	return finalTour;
