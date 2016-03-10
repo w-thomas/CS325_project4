@@ -1,7 +1,3 @@
-generate output function
-
-time answers
-
 run verifiers
 
 example instances solutions and time taken
@@ -28,3 +24,49 @@ endloop
 
 Pairwise Comparison Pseudocode
 ### TODO
+
+
+
+Example Instance Solutions
+
+Instance: tsp_example_1.txt
+Solution: 
+Time Taken: 
+
+Instance: tsp_example_2.txt
+Solution: 
+Time Taken: 
+
+Instance: tsp_example_3.txt
+Solution: 
+Time Taken: 
+
+
+Competition Instance Solutions
+Instance: test-input-1.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-2.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-3.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-4.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-5.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-6.txt
+Solution: 
+Time Taken: 
+
+Instance: test-input-7.txt
+Solution: 
+Time Taken: 
