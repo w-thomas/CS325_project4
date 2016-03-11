@@ -15,7 +15,7 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 	bool improve = false;
 
 	std::vector<int> finalTour = nnTour;
-  	clock_t max_time = CLOCKS_PER_SEC * 178;
+  	clock_t max_time = CLOCKS_PER_SEC * 15;
   	clock_t loop_time;
   	clock_t current_time;
 	while (!improve && timer < max_time)
@@ -33,11 +33,12 @@ std::vector<int> two_opt(std::vector<int> nnTour, std::vector< std::vector<int> 
 				//Improvement found, start over
 				if(new_dist < best_dist)
 				{
+					//std::cout << new_dist << std::endl;
 					improve = false;
 					finalTour = newTour;
 					best_dist = new_dist;
 				}
-
+				
 				//Check timer and return if necessary
 				current_time = clock();
 				loop_time = current_time - timer;

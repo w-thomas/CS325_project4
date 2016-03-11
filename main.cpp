@@ -22,8 +22,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-  clock_t startTime, endTime;
-  startTime = clock();
+  	clock_t startTime, endTime;
+  	startTime = clock();
 	
 	//Get input
 	std::vector< std::vector<int> > adjacencyMatrix;
@@ -33,12 +33,6 @@ int main(int argc, char* argv[])
 	//Get nearest neighbor tour
 	std::vector<int> tour = nnTour(adjacencyMatrix, numCities);
 
-	
-	
-	//Get and output cost
-	int cost = getCost(adjacencyMatrix, tour);
-	std::cout << "Total cost: " << cost << std::endl;
-		
 	//Output tour
 	std::cout << "Nearest Neighbor Tour" << std::endl;
 	for(int i = 0; i <= numCities-1; i++)
@@ -46,6 +40,10 @@ int main(int argc, char* argv[])
 		std::cout << tour[i] << '\t';
 	}
 	std::cout << std::endl;
+
+	//Get and output cost
+	int cost = getCost(adjacencyMatrix, tour);
+	std::cout << "Total cost: " << cost << std::endl;
 
 	//Get 2opt tour
 	std::vector<int> two_optTour = two_opt(tour, adjacencyMatrix, numCities, startTime);
@@ -59,11 +57,10 @@ int main(int argc, char* argv[])
 	//Get and output cost
 	cost = getCost(adjacencyMatrix, two_optTour);
 	file << cost << '\n';
-	std::cout << "Total cost: " << cost << std::endl;
 
 	//Output tour
 	std::cout << "After Pairwise Comparison" << std::endl;
-	for(int i = 0; i <= numCities; i++)
+	for(int i = 0; i <= numCities-1; i++)
 	{
 		std::cout << two_optTour[i] << '\t';
 		file << two_optTour[i] << '\n';
@@ -74,7 +71,7 @@ int main(int argc, char* argv[])
 	endTime = clock();
 	endTime -= startTime;
 
-	//Get and output cost
+	//Output cost
 	cost = getCost(adjacencyMatrix, two_optTour);
 	std::cout << "Total cost: " << cost << std::endl;
 
