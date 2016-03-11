@@ -22,14 +22,14 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
+  clock_t startTime, endTime;
+  startTime = clock();
+	
 	//Get input
 	std::vector< std::vector<int> > adjacencyMatrix;
   	get_input(argv[1], adjacencyMatrix);
   	int numCities = adjacencyMatrix.size();
 
-
-  	clock_t startTime, endTime;
-  	startTime = clock();
 	//Get nearest neighbor tour
 	std::vector<int> tour = nnTour(adjacencyMatrix, numCities);
 
